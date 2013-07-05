@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE digester-rules PUBLIC
+  "-//Apache Commons //DTD digester-rules XML V1.0//EN"
+  "http://commons.apache.org/digester/dtds/digester-rules-3.0.dtd">
+<digester-rules>
+	<object-create-rule pattern="SUITE"
+		classname="com.kong.wd.model.Suite" />
+	<set-properties-rule pattern="SUITE">
+		<alias attr-name="name" prop-name="name" />
+	</set-properties-rule>
+
+	<pattern value="SETTINGS">
+		<object-create-rule classname="com.kong.wd.model.Settings" />
+		<set-properties-rule pattern="SETTINGS">
+			<alias attr-name="browser" prop-name="browser" />
+			<alias attr-name="seleniumServer" prop-name="server" />
+			<alias attr-name="seleniumPort" prop-name="port" />
+			<alias attr-name="application_url" prop-name="url" />
+		</set-properties-rule>
+		
+		<set-next-rule methodname="addSettings"/>
+	</pattern>
+
+	<pattern value="CASE">
+		<object-create-rule classname="com.kong.wd.model.Case" />
+		<pattern value="STEPS">
+			<object-create-rule classname="com.kong.wd.model.Steps" />
+			<pattern value="STEP">
+				<object-create-rule classname="com.kong.wd.model.Step" />
+				<set-properties-rule pattern="STEP">
+					<alias attr-name="index" prop-name="index" />
+					<alias attr-name="type" prop-name="type" />
+					<alias attr-name="name" prop-name="name" />
+				</set-properties-rule>
+
+				<pattern value="DESCRIPTION">
+					<object-create-rule classname="com.kong.wd.model.Description" />
+					<set-properties-rule pattern="DESCRIPTION">
+						<alias attr-name="by" prop-name="by" />
+						<alias attr-name="action" prop-name="action" />
+						<alias attr-name="value" prop-name="value" />
+					</set-properties-rule>
+				</pattern>
+				<set-next-rule methodname="setDescription"/>
+			</pattern>
+			<set-next-rule methodname="addStep"/>
+		</pattern>
+
+		<set-next-rule methodname="addCase" />
+	</pattern>
+</digester-rules>

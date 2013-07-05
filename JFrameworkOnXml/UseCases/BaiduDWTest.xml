@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./SeleniumUseCase.xsl"?>
+<SUITE name="IBM开发者社区 演示测试用例">
+	<SETTINGS browser="ie" seleniumServer="127.0.0.1"
+		seleniumPort="4444" application_url="http://www.baidu.com">
+	</SETTINGS>
+	<CASE name="在Google中查询IBM developerWorks中国社区" timeout="10">
+		<STEPS>
+			<STEP index="1" type="Type.INPUT" name="在Google查询输入框，输入ibm developerworks cn">
+				<DESCRIPTION by="xpath" action="//*[@id='kw']" value="ibm developerworks cn" />
+			</STEP>
+			<STEP index="2" type="Type.CLICK" name="单击查询按钮，执行查询">
+				<DESCRIPTION by="xpath" action="//*[@id='su']" />
+			</STEP>
+			<STEP index='3' type='Type.CaptureScreenshot' name="测试截图函数">
+				<DESCRIPTION value="截图测试XML" />
+			</STEP>
+		</STEPS>
+	</CASE>
+</SUITE> 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="./SeleniumUseCase.xsl"?>
+<SUITE name="IBM开发者社区 演示测试用例">
+	<SETTINGS browser="chrome" seleniumServer="127.0.0.1"
+		seleniumPort="4444" application_url="http://www.google.com.hk/webhp?hl=en-US">
+	</SETTINGS>
+	<TEST name="在Google中查询IBM developerWorks中国社区" timeout="10">
+		<STEPS>
+			<STEP index="1" type="Type.INPUT" name="在Google查询输入框，输入ibm developerworks cn">
+				<XPATH>//*[@id='lst-ib']</XPATH>
+				<VALUE>ibm developerworks cn</VALUE>
+			</STEP>
+			<STEP index="2" type="Type.CLICK" name="单击查询按钮，执行查询">
+				<XPATH>//input[@name='btnK']</XPATH>
+			</STEP>
+			<STEP index='3' type='Type.CaptureScreenshot' name="测试截图函数">
+				<VALUE>截图测试XML</VALUE>
+			</STEP>
+		</STEPS>
+	</TEST>
+</SUITE> 
